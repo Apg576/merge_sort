@@ -4,8 +4,6 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import org.junit.Assert;
-
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -32,9 +30,7 @@ public class AppTest extends TestCase{
     }
 
     public void testMerge(){
-        /**
-         * формируем упорядоченный массив
-         */
+        //формируем упорядоченный массив
         final int COUNT = 100;
         final int STEP = 10;
         Random random = new Random();
@@ -46,20 +42,16 @@ public class AppTest extends TestCase{
             c[i]=a.getLast();
             k+=STEP;
         }
-        /**
-         * Случайным образом перемешиваем
-         */
+        // Случайным образом перемешиваем
         int[] b=new int[COUNT];
         k=0;int tmp=0;
-        while (a.size()>0){
+        while (!a.isEmpty()){
             tmp = random.nextInt(a.size());
             b[k]= a.get(tmp);
             a.remove(tmp);
             k++;
         }
-        /**
-         * Сортировка и проверка
-         */
+        // Сортировка и проверка
         new Merge().run(b);
         Assert.assertArrayEquals(c,b);
     }
